@@ -32,5 +32,5 @@ def calculate_similarity_score(file_path):
     print(f"Total similarity score: {similarity_score}")
 
 
-calculate_total_distance("day1\\input.txt")
-calculate_similarity_score("day1\\input.txt")
+calculate_total_distance("input.txt")
+calculate_similarity_score("input.txt")
