@@ -2,7 +2,7 @@ from math import isclose
 
 
 def read_input(filename):
-    with open(filename, 'r') as f:
+    with open(filename, "r") as f:
         return [list(line.strip()) for line in f.readlines()]
 
 
@@ -11,7 +11,7 @@ def find_antennas(grid):
     for y in range(len(grid)):
         for x in range(len(grid[y])):
             char = grid[y][x]
-            if char != '.':
+            if char != ".":
                 if char not in antennas:
                     antennas[char] = []
                 antennas[char].append((x, y))
@@ -36,8 +36,11 @@ def check_point_for_antinode(point, ant1, ant2):
     d1 = distance(ant1, point)
     d2 = distance(ant2, point)
 
-    return (d1 > 0 and d2 > 0 and
-            (isclose(d1 / d2, 2.0, rel_tol=1e-9) or isclose(d2 / d1, 2.0, rel_tol=1e-9)))
+    return (
+        d1 > 0
+        and d2 > 0
+        and (isclose(d1 / d2, 2.0, rel_tol=1e-9) or isclose(d2 / d1, 2.0, rel_tol=1e-9))
+    )
 
 
 def calculate_antinodes(grid, antennas):
@@ -92,7 +95,11 @@ def calculate_antinodes_part2(grid, antennas):
 def solve_antenna_problem(filename, part=1):
     grid = read_input(filename)
     antennas = find_antennas(grid)
-    antinodes = calculate_antinodes(grid, antennas) if part == 1 else calculate_antinodes_part2(grid, antennas)
+    antinodes = (
+        calculate_antinodes(grid, antennas)
+        if part == 1
+        else calculate_antinodes_part2(grid, antennas)
+    )
     return len(antinodes)
 
 
